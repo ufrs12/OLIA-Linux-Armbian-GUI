@@ -22,19 +22,19 @@ In browser(port see in terminal):
 
  /etc/nginx/sites-available/aspnetcore.conf  
 
- `
+ ```
  server {
-    listen 8888; # указываем порт, по которому nginx будет слушать запросы  
-    location / {  
-        proxy_pass http://localhost:5000; # указываем порт нашего приложения  
-        proxy_http_version 1.1;  
-        proxy_set_header Upgrade $http_upgrade;  
-        proxy_set_header Connection keep-alive;  
-        proxy_set_header Host $host;  
-        proxy_cache_bypass $http_upgrade;  
-    }  
-}  
- `
+    listen 8888; # указываем порт, по которому nginx будет слушать запросы
+    location / {
+        proxy_pass http://localhost:5000; # указываем порт нашего приложения
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection keep-alive;
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+ ```
 
 ## Frontend
 
