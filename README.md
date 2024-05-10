@@ -20,7 +20,41 @@ In browser(port see in terminal):
 
 `http://localhost:5111/weatherforecast`  
 
- /etc/nginx/sites-available/aspnetcore.conf  
+### Deploy
+```bash
+dotnet publish -c Release -o publish -r linux-arm64
+```
+or
+```bash
+dotnet publish -c Release -o publish -r linux-x64
+```
+```bash
+sudo nano /etc/systemd/system/kestrel-test.service
+```
+```
+[Unit]
+Description=Example .NET Web API Application running on Ubuntu
+
+[Service]
+WorkingDirectory=/home/alexey/publish #путь к publish папке вашего приложения
+ExecStart=/usr/bin/dotnet /home/alexey/publish/backend.dll # путь к опубликованной dll
+Restart=always
+RestartSec=10 # Перезапускать сервис через 10 секунд при краше приложения
+SyslogIdentifier=dotnet-example
+User=root # пользователь, под которым следует запускать ваш сервис
+Environment=ASPNETCORE_ENVIRONMENT=Production
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```bash
+sudo systemctl enable kestrel-test.service
+sudo systemctl start kestrel-test.service
+```
+
+
+ /etc/nginx/sites-available/webapi.conf  
 
  ```
  server {
@@ -34,6 +68,9 @@ In browser(port see in terminal):
         proxy_cache_bypass $http_upgrade;
     }
 }
+ ```
+ ```bash
+sudo ln -s /etc/nginx/sites-available/webapi.conf /etc/nginx/sites-enabled/webapi.conf
  ```
 
 ## Frontend
