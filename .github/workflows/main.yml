@@ -1,0 +1,8 @@
+name: Publish
+on: workflow_dispatch
+jobs:
+  print:
+    runs_on: ubuntu-latest
+    steps:
+      - name: Print
+      - run: echo Hallo!
