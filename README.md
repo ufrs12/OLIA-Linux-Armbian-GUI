@@ -78,3 +78,11 @@ sudo ln -s /etc/nginx/sites-available/webapi.conf /etc/nginx/sites-enabled/webap
 `ng new frontend`
 SCSS  
 Server-Side Rendering  
+
+`npm install bootstrap`  
+`npm install font-awesome`  
+In "build"/"styles" add:  
+`"node_modules/bootstrap/dist/css/bootstrap.min.css",  
+"node_modules/font-awesome/css/font-awesome.min.css",`  
+              
+
