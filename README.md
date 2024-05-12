@@ -81,7 +81,8 @@ Server-Side Rendering
 
 `npm install bootstrap`  
 `npm install font-awesome`  
-In "build"/"styles" add:  
+
+angular.json, in "build"/"styles" add:  
 `"node_modules/bootstrap/dist/css/bootstrap.min.css",`  
 `"node_modules/font-awesome/css/font-awesome.min.css",`  
               
